@@ -5,82 +5,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="googleb01ae9a4db61f705.html" />
+  <title>Hammad's Game World</title>
   <link rel="icon" href="https://hammadkaleemalam.github.io/hammadkaleemalam2/rounded_favicon.png" type="image/png">
   <meta name="description" content="The official website of Hammad Kaleem Alam. Learn about me, my achievements, and why I'm the best.">
-  <title>Hammad Kaleem Alam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: 'Press Start 2P', monospace;
+      background-color: #0f0f0f;
+      color: #00ff90;
+      padding: 10px;
     }
-    header {
-      background-color: #ffffff;
-      padding: 60px 20px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.5rem;
-      color: #666;
-    }
-    main {
-      max-width: 800px;
+    header, section, footer {
+      max-width: 900px;
       margin: 40px auto;
-      padding: 0 20px;
+      padding: 30px;
+      border: 2px dashed #00ff90;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideIn 1s forwards;
     }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      font-size: 1.75rem;
-      border-bottom: 2px solid #e0e0e0;
-      padding-bottom: 10px;
-    }
-    .contact a {
-      display: block;
-      margin: 8px 0;
-      color: #007acc;
+    h1, h2, p, a { text-align: center; }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 18px;
+      background-color: #00ff90;
+      color: #0f0f0f;
       text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: transform 0.2s;
     }
-    footer {
+    .btn:hover { transform: scale(1.1); }
+    ul { list-style-type: none; padding: 0; text-align: center; }
+    li::before { content: "★ "; }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes confetti {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(500px); opacity: 0; }
+    }
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      top: 0;
+      left: 50%;
+      animation: confetti 2s ease-out forwards;
+    }
+    #secretMessage {
       text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
-      font-size: 0.9rem;
-      color: #888;
+      margin-top: 20px;
+      color: yellow;
+      display: none;
+    }
+    #truthMessage {
+      text-align: center;
+      margin: 30px auto;
+      color: cyan;
+      font-size: 1rem;
+      display: none;
+    }
+    @media screen and (max-width: 768px) {
+      body { padding: 5px; }
+      header, section, footer {
+        padding: 20px;
+        font-size: 12px;
+      }
+      .btn {
+        padding: 10px 14px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Hammad Kaleem Alam</h1>
-    <p>Hammad is the best</p>
-  </header>
+<!-- Sounds -->
+<audio id="clickSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" preload="auto"></audio>
+<audio id="levelSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+<audio id="truthSound" src="https://actions.google.com/sounds/v1/alarms/magic_chime.ogg" preload="auto"></audio>
 
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>Hi, I’m <strong>Hammad Kaleem Alam</strong>, a proud student of <strong>Hamdard Public School</strong>, currently in Class 10, Section D.</p>
-      <p>I don’t just aim high — I set the standard. I’m not just the best… <strong>I’m the greatest.</strong></p>
-    </section>
+<script>
+  function playClick() {
+    document.getElementById("clickSound").play();
+  }
+  function playLevelSound() {
+    document.getElementById("levelSound").play();
+  }
+  function playTruthSound() {
+    document.getElementById("truthSound").play();
+  }
+</script>
 
-    <section class="contact">
-      <h2>Contact</h2>
-      <a href="mailto:hammadkaleemalam@gmail.com">📧 hammadkaleemalam@gmail.com</a>
-      <a href="https://www.snapchat.com/add/hammadk-alam" target="_blank">👻 Snapchat: hammadk-alam</a>
-    </section>
-  </main>
+<header>
+  <h1>🎮 Welcome, Player!</h1>
+  <p>Booting up... Hammad Kaleem Alam's World</p>
+  <a class="btn" href="#level1" onclick="playClick();playLevelSound();">▶ Start Game</a>
+</header>
 
-  <footer>
-    &copy; 2025 Hammad Kaleem Alam
-  </footer>
+<section id="level1">
+  <h2>🏆 LEVEL 1: About Me</h2>
+  <p>
+    Hi, I’m <strong>Hammad Kaleem Alam</strong>, a proud student of <strong>Hamdard Public School</strong>, currently in Class 10, Section D.
+  </p>
+  <p>
+    I don’t just aim high — I set the standard. I’m not just the best
+    <span id="dotSecret" style="cursor:pointer; color:#fff;">…</span>
+    <strong>I’m the greatest.</strong>
+  </p>
+  <div id="secretMessage">✨ LEGENDARY MODE ACTIVATED!</div>
+  <a class="btn" href="#level2" onclick="playClick();playLevelSound();">▶ Next Level</a>
+</section>
+
+<section id="level2">
+  <h2>🏆 LEVEL 2: Power-Ups</h2>
+  <ul>
+    <li>HTML – 90%</li>
+    <li>CSS – 80%</li>
+    <li>JavaScript – 70%</li>
+    <li>Canva Mastery – 100%</li>
+    <li>GitHub Deployment – Achieved!</li>
+    <li>In Progress: Firebase, React</li>
+  </ul>
+  <a class="btn" href="#level3" onclick="playClick();playLevelSound();">▶ Next Level</a>
+</section>
+
+<section id="level3">
+  <h2>🏆 LEVEL 3: Contact Portal</h2>
+  <p>Email: <a href="mailto:hammadkaleemalam@gmail.com">hammadkaleemalam@gmail.com</a></p>
+  <p>Snapchat: <a href="https://www.snapchat.com/add/hammadk-alam" target="_blank">hammadk-alam</a></p>
+  <a class="btn" href="#level4" onclick="playClick();playLevelSound();">▶ Final Level</a>
+</section>
+
+<footer id="level4">
+  <h2>🎉 GAME COMPLETED</h2>
+  <p>Thanks for exploring my digital world.</p>
+  <p>Hammad is the Best — 2025</p>
+  <div id="truthMessage">💬 At last, you have finally accepted the truth.</div>
+</footer>
+
+<script>
+  // Clickable Dot Easter Egg
+  document.getElementById("dotSecret").addEventListener("click", () => {
+    document.getElementById("secretMessage").style.display = "block";
+  });
+
+  // Konami Code Easter Egg
+  const code = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+  let konami = [];
+  document.addEventListener("keydown", (e) => {
+    konami.push(e.key);
+    konami.splice(-code.length - 1, konami.length - code.length);
+    if (konami.join("") === code.join("")) {
+      alert("✨ Secret Level Unlocked! You found the cheat code!");
+    }
+  });
+
+  // Typing "hammad is best" triggers confetti + sound + truth message
+  let typed = "";
+  document.addEventListener("keypress", (e) => {
+    typed += e.key;
+    if (typed.includes("hammad is best")) {
+      for (let i = 0; i < 100; i++) {
+        let confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+        confetti.style.animationDelay = Math.random() + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 2000);
+      }
+      playTruthSound();
+      document.getElementById("truthMessage").style.display = "block";
+    }
+  });
+</script>
 
 </body>
 </html>
